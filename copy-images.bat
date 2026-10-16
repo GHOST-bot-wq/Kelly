@@ -1,34 +1,52 @@
 @echo off
 chcp 65001 >nul
-echo ========================================================
-echo   DIVINA DERMA ^| KELLY REZENDE — SINCRONIZADOR DE IMAGENS
-echo ========================================================
-echo.
-echo Criando diretorios de imagens...
-if not exist "%~dp0public\images" mkdir "%~dp0public\images"
-if not exist "%~dp0images" mkdir "%~dp0images"
+title Sincronizador de Imagens — Kelly Rezende ^| Divina Derma
 
+echo =======================================================================
+echo   SINCRONIZAÇÃO DAS 4 IMAGENS OFICIAIS — KELLY REZENDE ^| DIVINA DERMA
+echo =======================================================================
+echo.
+
+set SCRIPT_DIR=%~dp0
 set SOURCE_DIR=C:\Users\Win11\.gemini\antigravity\brain\95fcb9fa-63ac-435e-97d5-d30994bd4e99\.user_uploaded
 
-echo Copiando foto profissional de Kelly Rezende...
-copy /Y "%SOURCE_DIR%\media_1792192323572_e7639cb2.png" "%~dp0public\images\kelly-rezende-profissional.png" >nul
-copy /Y "%SOURCE_DIR%\media_1792192323572_e7639cb2.png" "%~dp0images\kelly-rezende-profissional.png" >nul
+if not exist "%SOURCE_DIR%" (
+    echo [ERRO] Pasta de origem nao encontrada:
+    echo %SOURCE_DIR%
+    echo.
+    pause
+    exit /b 1
+)
 
-echo Copiando foto de procedimento (massagem facial e limpeza)...
-copy /Y "%SOURCE_DIR%\media_1792192308681_dae71ad1.png" "%~dp0public\images\procedimento-limpeza-massagem.png" >nul
-copy /Y "%SOURCE_DIR%\media_1792192308681_dae71ad1.png" "%~dp0images\procedimento-limpeza-massagem.png" >nul
+echo [1/3] Criando pastas de destino 'public\images' e 'images'...
+if not exist "%SCRIPT_DIR%public\images" mkdir "%SCRIPT_DIR%public\images"
+if not exist "%SCRIPT_DIR%images" mkdir "%SCRIPT_DIR%images"
 
-echo Copiando foto de protocolo (mascara facial e cuidado calmante)...
-copy /Y "%SOURCE_DIR%\media_1792192308694_dc190a34.png" "%~dp0public\images\protocolo-mascara-facial.png" >nul
-copy /Y "%SOURCE_DIR%\media_1792192308694_dc190a34.png" "%~dp0images\protocolo-mascara-facial.png" >nul
+echo [2/3] Copiando as 4 imagens oficiais fornecidas...
+echo.
 
-echo Copiando foto de tecnologia e produtos (mascara LED e peeling)...
-copy /Y "%SOURCE_DIR%\media_1792192308731_14fd13ee.png" "%~dp0public\images\tecnologia-cosmobeauty-led.png" >nul
-copy /Y "%SOURCE_DIR%\media_1792192308731_14fd13ee.png" "%~dp0images\tecnologia-cosmobeauty-led.png" >nul
+echo   - [1/4] Foto profissional de Kelly Rezende...
+copy /Y "%SOURCE_DIR%\media_1792192323572_e7639cb2.png" "%SCRIPT_DIR%public\images\kelly-rezende-profissional.png" >nul
+copy /Y "%SOURCE_DIR%\media_1792192323572_e7639cb2.png" "%SCRIPT_DIR%images\kelly-rezende-profissional.png" >nul
+
+echo   - [2/4] Foto do procedimento de higienizacao e massagem...
+copy /Y "%SOURCE_DIR%\media_1792192308681_dae71ad1.png" "%SCRIPT_DIR%public\images\procedimento-limpeza-massagem.png" >nul
+copy /Y "%SOURCE_DIR%\media_1792192308681_dae71ad1.png" "%SCRIPT_DIR%images\procedimento-limpeza-massagem.png" >nul
+
+echo   - [3/4] Foto do protocolo de mascara facial e repouso...
+copy /Y "%SOURCE_DIR%\media_1792192308694_dc190a34.png" "%SCRIPT_DIR%public\images\protocolo-mascara-facial.png" >nul
+copy /Y "%SOURCE_DIR%\media_1792192308694_dc190a34.png" "%SCRIPT_DIR%images\protocolo-mascara-facial.png" >nul
+
+echo   - [4/4] Foto de tecnologia LED e peeling de peptideos Cosmobeauty...
+copy /Y "%SOURCE_DIR%\media_1792192308731_14fd13ee.png" "%SCRIPT_DIR%public\images\tecnologia-cosmobeauty-led.png" >nul
+copy /Y "%SOURCE_DIR%\media_1792192308731_14fd13ee.png" "%SCRIPT_DIR%images\tecnologia-cosmobeauty-led.png" >nul
 
 echo.
-echo Todas as 4 imagens foram sincronizadas com sucesso em:
-echo - public/images/
-echo - images/
+echo [3/3] SUCESSO! As 4 imagens foram copiadas para:
+echo   - %SCRIPT_DIR%public\images\
+echo   - %SCRIPT_DIR%images\
+echo.
+echo Agora recarregue seu navegador (F5 ou Ctrl+F5) para ver o site com as fotos oficiais em alta resolucao!
+echo =======================================================================
 echo.
 pause

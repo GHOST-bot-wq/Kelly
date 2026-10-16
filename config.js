@@ -28,8 +28,7 @@ const CLINIC_CONFIG = {
 
   // Contato & WhatsApp Oficial
   contact: {
-    // IMPORTANTE: Insira aqui o número oficial com DDD (Ex: "5511999999999")
-    // Deixado com placeholder padrão formatado para fácil substituição antes da publicação
+    // Insira aqui o número oficial com DDD (Ex: "5511999999999")
     whatsappNumber: "5500000000000",
     whatsappDisplay: "(00) 00000-0000 [A Confirmar]",
     defaultMessage: "Olá! Conheci o site da Kelly Rezende e gostaria de saber mais sobre os tratamentos e agendar uma avaliação.",
@@ -37,7 +36,6 @@ const CLINIC_CONFIG = {
     instagramUrl: "https://instagram.com",
     email: "contato@divinaderma.com.br",
     
-    // Status dos dados de contato para alerta no rodapé/painel
     pendingConfirmation: {
       phone: true,
       address: true,
@@ -45,7 +43,7 @@ const CLINIC_CONFIG = {
     }
   },
 
-  // Localização & Horários (Configuráveis para quando forem confirmados)
+  // Localização & Horários
   location: {
     cityState: "Atendimento com Horário Marcado",
     addressLine1: "Consultório de Estética Facial Avançada",
@@ -56,33 +54,29 @@ const CLINIC_CONFIG = {
     hoursSunday: "Domingos e Feriados: Fechado"
   },
 
-  // Imagens Oficiais do Projeto
+  // Caminhos relativos padrão para as 4 imagens originais
   images: {
     professional: {
-      src: "./public/images/kelly-rezende-profissional.png",
-      fallbackSrc: "./images/kelly-rezende-profissional.png",
-      localSystemSrc: "file:///C:/Users/Win11/.gemini/antigravity/brain/95fcb9fa-63ac-435e-97d5-d30994bd4e99/.user_uploaded/media_1792192323572_e7639cb2.png",
+      primary: "public/images/kelly-rezende-profissional.png",
+      fallback: "images/kelly-rezende-profissional.png",
       alt: "Kelly Rezende — Especialista em Estética Facial Avançada e fundadora da Divina Derma",
       title: "Kelly Rezende | Estética Facial Avançada"
     },
     procedureMassage: {
-      src: "./public/images/procedimento-limpeza-massagem.png",
-      fallbackSrc: "./images/procedimento-limpeza-massagem.png",
-      localSystemSrc: "file:///C:/Users/Win11/.gemini/antigravity/brain/95fcb9fa-63ac-435e-97d5-d30994bd4e99/.user_uploaded/media_1792192308681_dae71ad1.png",
+      primary: "public/images/procedimento-limpeza-massagem.png",
+      fallback: "images/procedimento-limpeza-massagem.png",
       alt: "Procedimento facial em andamento: higienização, massagem descompressiva e cuidado técnico",
       title: "Cuidado Clínico e Higienização Profunda"
     },
     procedureMask: {
-      src: "./public/images/protocolo-mascara-facial.png",
-      fallbackSrc: "./images/protocolo-mascara-facial.png",
-      localSystemSrc: "file:///C:/Users/Win11/.gemini/antigravity/brain/95fcb9fa-63ac-435e-97d5-d30994bd4e99/.user_uploaded/media_1792192308694_dc190a34.png",
+      primary: "public/images/protocolo-mascara-facial.png",
+      fallback: "images/protocolo-mascara-facial.png",
       alt: "Protocolo de máscara facial regeneradora com proteção ocular e conforto térmico",
       title: "Protocolo Calmante & Nutrição Cutânea"
     },
     technologyProducts: {
-      src: "./public/images/tecnologia-cosmobeauty-led.png",
-      fallbackSrc: "./images/tecnologia-cosmobeauty-led.png",
-      localSystemSrc: "file:///C:/Users/Win11/.gemini/antigravity/brain/95fcb9fa-63ac-435e-97d5-d30994bd4e99/.user_uploaded/media_1792192308731_14fd13ee.png",
+      primary: "public/images/tecnologia-cosmobeauty-led.png",
+      fallback: "images/tecnologia-cosmobeauty-led.png",
       alt: "Equipamentos de alta tecnologia estética: Máscara de Fototerapia LED, Peeling de Peptídeos NAD+ e Dermocosméticos Cosmobeauty",
       title: "Tecnologia LED & Nanotecnologia Dermocosmética"
     }

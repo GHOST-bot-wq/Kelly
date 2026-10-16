@@ -1,83 +1,77 @@
 # Kelly Rezende | Divina Derma — Estética Facial Avançada
 
-> Projeto institucional de alto padrão desenvolvido com arquitetura editorial de luxo contemporâneo, código limpo, zero dependências pesadas e pronto para produção e implantação imediata na Vercel.
+> Site institucional premium desenvolvido sob os princípios do luxo contemporâneo, tipografia editorial, código sem dependências externas pesadas e arquitetura pronta para produção e deploy imediato na Vercel.
 
 ---
 
 ## 💎 Identidade Visual & Conceito
 
-- **Paleta de Cores:**
+- **Paleta de Cores Oficial:**
   - Off-white (`#F8F5F0`)
   - Bege Champagne (`#E9DED2`)
   - Nude Rosado (`#D7BDB4`)
   - Marrom Profundo (`#3B302C`)
   - Grafite (`#242220`)
   - Dourado Fosco (`#B79A65`)
-- **Tipografia Editorial:** *Cormorant Garamond* para títulos e assinaturas, combinado com *Manrope* para leitura e interfaces.
-- **Linguagem:** Layout editorial assimétrico, respeitando o respiro de marcas de luxo, sem elementos genéricos de IA.
+- **Tipografia:** *Cormorant Garamond* (títulos de autoridade) + *Manrope* (leitura e interface).
+- **Linguagem Visual:** Composição editorial assimétrica, respiro sofisticado, sem elementos genéricos de IA.
 
 ---
 
 ## 📸 As 4 Imagens Oficiais Utilizadas
 
-O projeto incorpora e respeita estritamente os 4 arquivos de imagem fornecidos:
+O projeto faz uso efetivo e respeitoso das 4 imagens fornecidas:
 
-1. **`kelly-rezende-profissional.png`** (Retrato Profissional):
-   - Fotografia da profissional Kelly Rezende.
-   - Utilizada com destaque no **Hero** (com moldura dourada e badge flutuante "9 Anos Transformando Peles") e na **Apresentação da Profissional** (seção Sobre).
-2. **`procedimento-limpeza-massagem.png`** (Higienização & Emoliência):
-   - Registro em cabine de manobras manuais delicadas com luvas pretas de biossegurança e aparelho de vapor ao fundo.
-   - Utilizada na seção de **Resultados & Cabine** e na demonstração dos procedimentos manuais.
-3. **`protocolo-mascara-facial.png`** (Cuidado & Nutrição Cutânea):
-   - Registro de paciente em repouso com máscara facial calmante e protetores oculares.
-   - Utilizada na seção de **Resultados & Cabine** para evidenciar a experiência relaxante e regeneradora.
-4. **`tecnologia-cosmobeauty-led.png`** (Tecnologia & Ciência):
-   - Máscara de Fototerapia LED associada a dermocosméticos nobres (Cosmobeauty antiOxC Sabonete C10 e Peeling de Peptídeos NAD+ Gold Dermic 3 Concentrado de Ouro Líquido).
-   - Utilizada na galeria para demonstrar o investimento em ativos e tecnologias estéticas avançadas.
-
----
-
-## ⚡ Como Sincronizar as Imagens para Publicação
-
-Para garantir que os arquivos estejam nas pastas `public/images/` e `images/` antes de subir para o GitHub ou Vercel:
-
-1. Dê um duplo-clique no arquivo **`copy-images.bat`** (Windows); ou
-2. Execute no PowerShell: `.\setup-images.ps1`
-
-*Nota: O código HTML e JS já possui um sistema inteligente de fallback que localiza as imagens automaticamente tanto em ambiente local quanto em servidor web.*
+1. **`kelly-rezende-profissional.png`** (Retrato de Kelly Rezende):
+   - Fotografia da fundadora e especialista.
+   - Utilizada com destaque no **Hero** (com moldura dourada e badge "9 Anos Transformando Peles") e na **Apresentação da Profissional** (seção Sobre).
+2. **`procedimento-limpeza-massagem.png`** (Higienização & Manobras de Cabine):
+   - Registro real com luvas pretas cirúrgicas, emoliência e vaporizador facial ao fundo.
+   - Utilizada na seção de **Resultados & Cabine**.
+3. **`protocolo-mascara-facial.png`** (Máscara Calmante & Nutrição):
+   - Registro de paciente em repouso com máscara regeneradora e proteção ocular.
+   - Utilizada na seção de **Resultados & Cabine**.
+4. **`tecnologia-cosmobeauty-led.png`** (Tecnologia & Dermocosméticos):
+   - Fototerapia com Máscara LED, Cosmobeauty antiOxC e Peeling de Peptídeos NAD+ Concentrado de Ouro Líquido.
+   - Utilizada na seção de **Resultados & Cabine**.
 
 ---
 
-## ⚙️ Configuração Centralizada (`config.js`)
+## ⚡ Sincronização das Imagens (Passo Rápido de 1 Clique)
 
-Todas as informações variáveis da clínica estão centralizadas no arquivo [`config.js`](file:///c:/Users/Win11/Downloads/template/config.js).
+Os arquivos originais enviados encontram-se preservados na pasta de upload do sistema.
 
-Você pode alterar com facilidade:
-- Número de WhatsApp oficial (`whatsappNumber`);
-- Usuário do Instagram (`instagramUser`);
-- Endereço da clínica (`addressLine1`, `addressLine2`);
-- Horários de atendimento (`hoursWeekday`, `hoursSaturday`);
-- Lista de tratamentos, descrições e objetivos.
+Para copiá-los de imediato para dentro da estrutura do site (`public/images/` e `images/`):
 
----
+👉 **Dê um duplo-clique no arquivo [`copy-images.bat`](file:///c:/Users/Win11/Downloads/template/copy-images.bat)** (Windows)  
+*Ou abra o PowerShell na pasta e execute: `.\setup-images.ps1`*
 
-## 🚀 Como Visualizar e Fazer o Deploy na Vercel
-
-### Visualização Local Imediata
-Basta dar um duplo clique no arquivo [`index.html`](file:///c:/Users/Win11/Downloads/template/index.html) para abrir diretamente em qualquer navegador moderno.
-
-### Deploy na Vercel
-1. Crie um repositório no GitHub e envie os arquivos desta pasta.
-2. Acesse [vercel.com](https://vercel.com) e importe o repositório.
-3. O arquivo [`vercel.json`](file:///c:/Users/Win11/Downloads/template/vercel.json) já está configurado com as regras de cabeçalho, segurança e cache de imagens. O deploy será concluído em menos de 1 minuto!
+Após a execução, todas as 4 imagens estarão salvas localmente nas pastas do projeto e renderizarão de imediato no navegador.
 
 ---
 
-## 📋 Dados Pendentes de Confirmação com a Cliente
+## 🛡️ Tratamento Visual de Fallback (Sem Imagem Quebrada)
 
-Conforme as diretrizes éticas e de posicionamento, os seguintes pontos devem ser validados com Kelly Rezende antes do lançamento público oficial:
+- Se as imagens ainda não tiverem sido sincronizadas na pasta, o site ativa automaticamente um **tratamento de erro visual discreto**:
+  - Em vez do ícone de imagem quebrada do navegador, é renderizado um card editorial sofisticado com monograma dourado "KR", títulos refinados e dimensões idênticas, preservando a harmonia da primeira dobra e o cartão "9 Anos".
+- Não há caminhos absolutos do tipo `C:\Users\...` no HTML, nem risco de bloqueio de segurança local.
 
-1. **Número Oficial do WhatsApp:** Configurar o número real com DDD no [`config.js`](file:///c:/Users/Win11/Downloads/template/config.js).
-2. **Endereço Completo do Consultório:** Inserir rua, número, bairro e cidade no [`config.js`](file:///c:/Users/Win11/Downloads/template/config.js).
-3. **Horários Exatos de Cabine:** Confirmar os dias da semana e horários de agendamento.
-4. **Formação Acadêmica:** Manter a indicação "Graduanda em Biomedicina (7/8 período)" até a colação de grau oficial e registro definitivo no conselho regional (CRBM).
+---
+
+## ⚙️ Configurações Editáveis (`config.js`)
+
+Todas as informações variáveis da clínica estão centralizadas no arquivo [`config.js`](file:///c:/Users/Win11/Downloads/template/config.js):
+- WhatsApp e mensagem pré-formatada;
+- Usuário do Instagram;
+- Endereço e horários de atendimento;
+- Catálogo de procedimentos e diferenciais.
+
+---
+
+## 🚀 Publicação na Vercel
+
+O projeto está 100% preparado para a Vercel com o arquivo [`vercel.json`](file:///c:/Users/Win11/Downloads/template/vercel.json).
+Para publicar:
+1. Suba esta pasta para um repositório GitHub;
+2. Importe o projeto no painel da [Vercel](https://vercel.com);
+3. O deploy estático será concluído em segundos com URLs limpas e cache configurado.

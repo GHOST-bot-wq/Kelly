@@ -3,7 +3,7 @@
  * KELLY REZENDE | DIVINA DERMA — INTERAÇÕES & COMPORTAMENTO
  * =====================================================================
  * Frontend refinado com Vanilla JavaScript:
- * - Sincronização e Fallback de Imagens
+ * - Tratamento Robusto de Imagens (Multi-caminho Relativo + Fallback Editorial)
  * - Header responsivo com efeito blur dinâmico
  * - Menu mobile acessível e fluido
  * - Filtro de categorias do catálogo de tratamentos
@@ -13,7 +13,7 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  initImageFallbacks();
+  initImageResolution();
   initHeaderScroll();
   initMobileNav();
   initSmoothScroll();
@@ -25,27 +25,91 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * 1. TRATAMENTO INTELIGENTE DE IMAGENS & FALLBACK
- * Garante que nenhuma imagem apareça quebrada, tentando o caminho local
- * ou o caminho fornecido no ambiente Antigravity.
+ * 1. RESOLUÇÃO DE IMAGENS & TRATAMENTO DE ERRO VISUAL DISCRETO
+ * Testa múltiplos caminhos relativos válidos (/images, public/images, images).
+ * Se o arquivo ainda não foi sincronizado pelo usuário, exibe um cartão editorial
+ * sofisticado no lugar da imagem quebrada, preservando proporções, respiro e o selo de 9 Anos.
  */
-function initImageFallbacks() {
-  const images = document.querySelectorAll("img[data-fallback]");
-  images.forEach(img => {
-    img.addEventListener("error", function () {
-      const fallback = this.getAttribute("data-fallback");
-      if (fallback && this.src !== fallback) {
-        this.src = fallback;
-      }
-    });
+function initImageResolution() {
+  const allImages = document.querySelectorAll("img[data-filename]");
+
+  allImages.forEach(img => {
+    resolveImageSources(img);
   });
 }
 
-// Global handler chamado no inline onerror
-window.handleImgFallback = function (el) {
-  if (el && el.dataset && el.dataset.fallback && el.src !== el.dataset.fallback) {
-    el.src = el.dataset.fallback;
+function resolveImageSources(img) {
+  const filename = img.getAttribute("data-filename");
+  if (!filename) return;
+
+  // Lista ordenada de caminhos relativos aceitos em servidores web, Vite e arquivos locais
+  const candidates = [
+    `images/${filename}`,
+    `public/images/${filename}`,
+    `./images/${filename}`,
+    `./public/images/${filename}`,
+    `/images/${filename}`
+  ];
+
+  let currentAttempt = 0;
+
+  function tryNext() {
+    if (currentAttempt < candidates.length) {
+      const nextPath = candidates[currentAttempt];
+      currentAttempt++;
+      img.src = nextPath;
+    } else {
+      // Se todos os caminhos relativos falharem, aciona o fallback editorial discreto
+      handleVisualFallback(img);
+    }
   }
+
+  img.addEventListener("error", function onImgError() {
+    tryNext();
+  });
+
+  img.addEventListener("load", function onImgLoad() {
+    // Imagem carregada com sucesso! Garante exibição perfeita
+    img.classList.remove("image-failed");
+    img.style.display = "block";
+    const existingFallback = img.parentElement?.querySelector(".editorial-fallback-card");
+    if (existingFallback) {
+      existingFallback.remove();
+    }
+  });
+
+  // Dispara a primeira tentativa
+  tryNext();
+}
+
+function handleVisualFallback(img) {
+  img.classList.add("image-failed");
+  img.style.display = "none";
+
+  const parent = img.parentElement;
+  if (!parent || parent.querySelector(".editorial-fallback-card")) return;
+
+  const title = img.getAttribute("data-fallback-title") || "Kelly Rezende";
+  const subtitle = img.getAttribute("data-fallback-sub") || "Divina Derma • Estética Facial";
+  const badge = img.getAttribute("data-fallback-badge") || "Estética Facial Avançada";
+
+  const fallbackCard = document.createElement("div");
+  fallbackCard.className = "editorial-fallback-card";
+  fallbackCard.innerHTML = `
+    <div class="fallback-monogram">KR</div>
+    <div class="fallback-title font-serif">${title}</div>
+    <div class="fallback-subtitle">${subtitle}</div>
+    <div class="fallback-badge">${badge}</div>
+  `;
+
+  parent.appendChild(fallbackCard);
+
+  console.info(`[Divina Derma] Imagem "${img.getAttribute('data-filename')}" em aguardo de sincronização.`);
+}
+
+// Global handler chamado no inline onerror caso necessário
+window.handleImgFallback = function (el) {
+  if (el) resolveImageSources(el);
 };
 
 /**
@@ -94,7 +158,6 @@ function initMobileNav() {
     link.addEventListener("click", () => toggleMenu(false));
   });
 
-  // Fechar com tecla ESC
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && drawer.classList.contains("open")) {
       toggleMenu(false);
@@ -291,7 +354,6 @@ function initFaqAccordion() {
     trigger.addEventListener("click", () => {
       const isActive = item.classList.contains("active");
 
-      // Fecha todos os outros itens para um efeito minimalista elegante
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove("active");
@@ -317,14 +379,12 @@ function initFaqAccordion() {
  * 9. VINCULAR LINKS DINÂMICOS DA CONFIGURAÇÃO
  */
 function bindConfigLinks() {
-  // Atualiza botões diretos de WhatsApp com a mensagem padrão
   const directWaButtons = document.querySelectorAll(".btn-direct-whatsapp");
   directWaButtons.forEach(btn => {
     const customText = btn.getAttribute("data-message");
     btn.href = getWhatsAppUrl(customText);
   });
 
-  // Atualiza Instagram oficial
   const instaLinks = document.querySelectorAll(".link-instagram");
   instaLinks.forEach(link => {
     if (CLINIC_CONFIG?.contact?.instagramUrl) {
