@@ -42,7 +42,16 @@ function resolveImageSources(img) {
   const filename = img.getAttribute("data-filename");
   if (!filename) return;
 
-  // Lista ordenada de caminhos relativos aceitos em servidores web, Vite e arquivos locais
+  const userUploadMap = {
+    "kelly-rezende-profissional.png": "media_1792192323572_e7639cb2.png",
+    "procedimento-limpeza-massagem.png": "media_1792192308681_dae71ad1.png",
+    "protocolo-mascara-facial.png": "media_1792192308694_dc190a34.png",
+    "tecnologia-cosmobeauty-led.png": "media_1792192308731_14fd13ee.png"
+  };
+
+  const uploadFile = userUploadMap[filename];
+
+  // Lista ordenada de caminhos relativos e locais aceitos
   const candidates = [
     `images/${filename}`,
     `public/images/${filename}`,
@@ -50,6 +59,11 @@ function resolveImageSources(img) {
     `./public/images/${filename}`,
     `/images/${filename}`
   ];
+
+  if (uploadFile) {
+    candidates.push(`../../.gemini/antigravity/brain/95fcb9fa-63ac-435e-97d5-d30994bd4e99/.user_uploaded/${uploadFile}`);
+    candidates.push(`file:///C:/Users/Win11/.gemini/antigravity/brain/95fcb9fa-63ac-435e-97d5-d30994bd4e99/.user_uploaded/${uploadFile}`);
+  }
 
   let currentAttempt = 0;
 
@@ -59,7 +73,7 @@ function resolveImageSources(img) {
       currentAttempt++;
       img.src = nextPath;
     } else {
-      // Se todos os caminhos relativos falharem, aciona o fallback editorial discreto
+      // Se todos os caminhos falharem por ausência física do arquivo na pasta, orienta o usuário
       handleVisualFallback(img);
     }
   }
@@ -89,22 +103,24 @@ function handleVisualFallback(img) {
   const parent = img.parentElement;
   if (!parent || parent.querySelector(".editorial-fallback-card")) return;
 
-  const title = img.getAttribute("data-fallback-title") || "Kelly Rezende";
-  const subtitle = img.getAttribute("data-fallback-sub") || "Divina Derma • Estética Facial";
-  const badge = img.getAttribute("data-fallback-badge") || "Estética Facial Avançada";
+  const title = img.getAttribute("data-fallback-title") || "Foto Oficial";
+  const badge = img.getAttribute("data-fallback-badge") || "Kelly Rezende • Divina Derma";
 
   const fallbackCard = document.createElement("div");
   fallbackCard.className = "editorial-fallback-card";
   fallbackCard.innerHTML = `
-    <div class="fallback-monogram">KR</div>
-    <div class="fallback-title font-serif">${title}</div>
-    <div class="fallback-subtitle">${subtitle}</div>
-    <div class="fallback-badge">${badge}</div>
+    <div class="fallback-monogram" style="font-size: 1.1rem; width: 50px; height: 50px;">📸</div>
+    <div class="fallback-title font-serif" style="font-size: 1.25rem;">${title}</div>
+    <div class="fallback-subtitle" style="color: #B79A65; font-size: 0.75rem; margin-bottom: 12px;">FOTO OFICIAL DO PROJETO</div>
+    <p style="font-size: 0.8rem; color: #5A4C47; max-width: 280px; line-height: 1.4; margin-bottom: 14px;">
+      Dê 2 cliques no arquivo <strong>COPIAR-FOTOS-DA-KELLY.bat</strong> na sua <strong>Área de Trabalho</strong> (ou na pasta do projeto) e aperte F5 aqui!
+    </p>
+    <div class="fallback-badge" style="font-size: 0.72rem;">${badge}</div>
   `;
 
   parent.appendChild(fallbackCard);
 
-  console.info(`[Divina Derma] Imagem "${img.getAttribute('data-filename')}" em aguardo de sincronização.`);
+  console.info(`[Divina Derma] Imagem "${img.getAttribute('data-filename')}" aguardando arquivo local.`);
 }
 
 // Global handler chamado no inline onerror caso necessário
