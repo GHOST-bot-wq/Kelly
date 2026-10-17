@@ -1,7 +1,14 @@
 {
-  "version": 2,
+  "buildCommand": "node build.js",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -25,7 +32,7 @@
       ]
     },
     {
-      "source": "/public/images/(.*)",
+      "source": "/images/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

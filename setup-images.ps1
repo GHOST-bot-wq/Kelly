@@ -4,7 +4,9 @@ $ErrorActionPreference = "Stop"
 $sourceDir = "C:\Users\Win11\.gemini\antigravity\brain\95fcb9fa-63ac-435e-97d5-d30994bd4e99\.user_uploaded"
 $destDirs = @(
     Join-Path $PSScriptRoot "public\images",
-    Join-Path $PSScriptRoot "images"
+    Join-Path $PSScriptRoot "images",
+    Join-Path $PSScriptRoot "dist\images",
+    Join-Path $PSScriptRoot "dist\public\images"
 )
 
 Write-Host "Criando diretórios de imagens..." -ForegroundColor Cyan
@@ -35,4 +37,4 @@ foreach ($img in $images.GetEnumerator()) {
     }
 }
 
-Write-Host "`nTodas as 4 imagens sincronizadas com sucesso!" -ForegroundColor Magenta
+Write-Host "`nTodas as 4 imagens sincronizadas com sucesso em todos os diretórios!" -ForegroundColor Magenta
